@@ -1,17 +1,17 @@
+version: '3.8'
+
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: express-app
-    ports:
-      - "3000:3000"
+  database:
+    image: mysql:latest
+    container_name: mysql-db
+    restart: always
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: ordinario_modelo_admin
+    ports:
+      - "3307:3306"
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    command: sh -c "npm install && node app.js"
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
