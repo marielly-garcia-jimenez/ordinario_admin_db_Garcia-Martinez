@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "1d3db2d3-39d6-417c-9be5-1db768779e1a",
+		"name": "ordinario-DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3541125"
+	},
+	"item": [
+		{
+			"name": "estudiates",
+			"item": [
+				{
+					"name": "estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/estudiantes",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "estudiantes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"{{$randomFirstName}}\",\n    \"apellidos\": \"{{$randomLastName}}\",\n    \"email\":\"{{$randomEmail}}\",\n    \"matricula\": \"{{$randomWord}}\",\n    \"edad\":\"{{$randomInt}}\",\n    \"semestre\":\"{{$randomInt}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/estudiantes",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "maestros",
+			"item": [
+				{
+					"name": "maestros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/mestros",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"mestros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "maestros",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"nombre\" :\"{{$randomFirstName}}\",\n  \"edad\": \"{{$randomInt}}\",\n  \"telefono\" :\"{{$randomPhoneNumber}}\",\n  \"correo\": \"{{$randomEmail}}\"\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/mestros",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"mestros"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "materias",
+			"item": [
+				{
+					"name": "materias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/asignaturas",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"asignaturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "materia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/asignaturas",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"asignaturas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calificaciones",
+			"item": [
+				{
+					"name": "calificaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/calificaciones",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calificaciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estudiante_matricula\":\"{{$randomWord}}\",\n    \"maestro_correo\":\"{{$randomEmail}}\",\n    \"materia_nombre\":\"{{$randomWord}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://35.91.182.186:3000/api/calificaciones",
+							"host": [
+								"35.91.182.186"
+							],
+							"port": "300",
+							"path": [
+								"api",
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
