@@ -1,29 +1,33 @@
 const { getData, sendData } = require('../helpers/dbHelpers');
 
 const getEstudiantes = (req, res) => {
-    getData('estudiantes', res);
-}
+    return getData('estudiantes', res);
+};
 
-const CreateEstudiante = (req, res) => {
+const createEstudiante = (req, res) => {
     const { nombre, apellidos, email, matricula, edad, semestre, usuario_creacion } = req.body;
 
-    if(!nombre || !apellidos || !email || !matricula || !edad || !semestre || !usuario_creacion)
-    {
-        return res.status(400).json({error: 'faltan datos.'});
-       
+
+    if (!nombre || !apellidos || !email || !matricula || !edad || !semestre || !usuario_creacion) {
+        return res.status(400).json({ error: 'Faltan datos.' });
     }
-    if(isNaN(edad))
-    {
-        return res.status(400).json({ error: 'La edad debe ser numerica.'});
+
+ 
+    if (isNaN(edad)) {
+        return res.status(400).json({ error: 'La edad debe ser numérica.' });
     }
-    
-    const fecha_creacion = new Date().toUSIString().slice(0,19,replace('T', ''));
 
-    const query = 'INSERT INTO estudiantes (nombre, apellidos, email, matricula, edad, semestre, usuario_creacion, fecha_creacion) Values (?,?,?,?,?,?,?,?)';
 
-    const values = [ nombre, apellidos, email, matricula, edad, semestre, usuario_creacion, fecha_creacion ];
+    const fecha_creacion = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-    sendData(query, values, res);
-}
+    const query = `
+        INSERT INTO estudiantes 
+        (nombre, apellidos, email, matricula, edad, semestre, usuario_creacion, fecha_creacion) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [nombre, apellidos, email, matricula, edad, semestre, usuario_creacion, fecha_creacion];
 
-module.exports = { getEstudiantes, CreateEstudiante}
+    return sendData(query, values, res);
+};
+
+module.exports = { getEstudiantes, createEstudiante };

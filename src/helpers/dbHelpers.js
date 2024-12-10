@@ -1,6 +1,5 @@
 const con = require('../config/database');
 
-// maestros => getData(maestros, res) => SELECT * FROM maestros;
 const getData = (tabla, res) => {
 
     const query = `SELECT * FROM ??`; 
