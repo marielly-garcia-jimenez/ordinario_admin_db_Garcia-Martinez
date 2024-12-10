@@ -6,8 +6,6 @@ services:
     container_name: express-app
     ports:
       - "3000:3000"
-    depends_on:
-      - database
     environment:
       - DB_HOST=${DB_HOST}
       - DB_USER=${DB_USER}
@@ -17,20 +15,3 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     command: sh -c "npm install && node app.js"
-
-  database:
-    image: mysql:latest
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-    ports:
-      - "3306:3306"
-    volumes:
-      - database_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
-volumes:
-  database_data:
-
